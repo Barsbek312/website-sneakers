@@ -3,18 +3,24 @@ import Card from '../components/Card';
 
 function Home({searchValue, setSearchValue, onChangeSearchInput, items, onAddToCart, onAddToFavorite, cartItems, isLoading }) {
     const renderItems = () => {
-      const filtredItems = items.filter(item => item.title.toLowerCase().includes(searchValue.toLowerCase()))
-      return (isLoading ? [...Array(12)] : filtredItems)
-        .map((item, index) => (
+      const filtredItems = items.filter((item) => 
+        item.title.toLowerCase().includes(searchValue.toLowerCase()))
+      
+      return(isLoading ? [...Array(12)].map(() => (
+          <Card 
+            loading = {isLoading}
+          />
+        )) 
+      : 
+        filtredItems.map((item, index) => (
           <Card 
             key={index}
-            added={cartItems.some((obj) => Number(obj.id) === Number(item.id)) }
-            onPlus = {onAddToCart}
             onFavorite = {(obj) => onAddToFavorite(obj)}
-            loading={true}
+            onPlus = {(obj) => onAddToCart(obj)}
+            loading = {isLoading}
             {...item}
-          />
-        ))
+        />
+      )))
     };
     return ( 
         <div className="content p-40">

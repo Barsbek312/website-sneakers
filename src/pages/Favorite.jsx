@@ -1,6 +1,10 @@
 import Card from '../components/Card'; 
+import { AppContext } from "../App";
+import React from "react";
 
-function Favorite({searchValue, setSearchValue, onChangeSearchInput, favorites, onAddToCart, onAddToFavorite}) {
+function Favorite({searchValue, setSearchValue, onChangeSearchInput, onAddToCart}) {
+  const {favorites, onAddToFavorite} = React.useContext(AppContext);
+
     return ( 
         <div className="content p-40">
           <div className="d-flex align-center justify-between mb-40">
@@ -15,14 +19,14 @@ function Favorite({searchValue, setSearchValue, onChangeSearchInput, favorites, 
             {
               favorites.filter(item => item.title.toLowerCase().includes(searchValue.toLowerCase())).map((item, index) => (
                 <Card 
-                  key={index}
-                  title={item.title}
-                  price={item.price} 
-                  imageURL={item.imageURL}
-                  id={item.id}
+                  key= {index}
+                  title= {item.title}
+                  price= {item.price} 
+                  imageURL= {item.imageURL}
+                  id= {item.id}
                   onPlus = {onAddToCart}
-                  onFavorite = {(obj) => onAddToFavorite(obj)}
-                  favorited={true}
+                  onFavorite = {onAddToFavorite}
+                  favorited= {true}
                 />
               ))}   
           </div>

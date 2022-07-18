@@ -39,7 +39,7 @@ function Drawer({onClickClose, onRemove, items = [], opened}) {
     return(
         <div className={`${drawerStyles.overlay} ${opened ? drawerStyles.overlay__visible : ''}`}>
             <div className={`${drawerStyles.drawer} d-flex flex-column`}>
-                <h2 className="mb-20">Корзина <img onClick={onClickClose} className="remove__btn cu-p" src="/img/btn-remove.svg" alt="Remove"/></h2>
+                <h2 className="mb-20">Корзина <img onClick={onClickClose} className="remove__btn cu-p" src="img/btn-remove.svg" alt="Remove"/></h2>
 
                 {
                     items.length > 0 ? 
@@ -53,7 +53,7 @@ function Drawer({onClickClose, onRemove, items = [], opened}) {
                                         <p className="mb-5">{obj.title}</p>
                                         <b>{obj.price}</b>
                                         </div>
-                                            <img onClick={() => onRemove(obj.id)} className="remove__btn cu-p " src="/img/btn-remove.svg" alt="Remove"/>
+                                            <img onClick={() => onRemove(obj.id)} className="remove__btn cu-p " src="img/btn-remove.svg" alt="Remove"/>
                                         </div>
                                     ) )
                                 }
@@ -71,13 +71,13 @@ function Drawer({onClickClose, onRemove, items = [], opened}) {
                                         <b>{ Math.round(totalAmount)} руб.</b>
                                     </li>
                                 </ul> 
-                                <button disabled={isLoading} onClick={onClickOrder} className="green__btn">Оформить заказ <img src="/img/arrow.svg" alt="Arrow"/></button>
+                                <button disabled={isLoading} onClick={onClickOrder} className="green__btn">Оформить заказ <img src="img/arrow.svg" alt="Arrow"/></button>
                             </div>
                         </div>
                         :
                         <Info 
                             title={isOrderComplete ? "Заказ оформлен!" : "Корзина пустая"}
-                            image={isOrderComplete ? "/img/order-complete.jpg" : "/img/empty-cart.jpg"}
+                            image={isOrderComplete ? "img/order-complete.jpg" : "img/empty-cart.jpg"}
                             description={isOrderComplete ? `Ваш заказ #${orderId} скоро будет передан курьерской доставке` : "Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ."}
                         />
                 }
